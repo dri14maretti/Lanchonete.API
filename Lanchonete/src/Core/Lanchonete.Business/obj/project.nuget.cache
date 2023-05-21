@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ECQf4YG6FB6LaKy/3xhq0WmwO+DCp7rUFIsK/Jd8IIOMvQCjVGHUdh8uEtC5zW1gizKpFQKX6aROgEJnL2yXIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Estudos\\Lanchonete.API\\Lanchonete\\src\\Core\\Lanchonete.Business\\Lanchonete.Business.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.sisatec.com.br/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
