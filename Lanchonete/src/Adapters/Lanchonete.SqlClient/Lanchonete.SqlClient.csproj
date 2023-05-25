@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lanchonete.Domain\Lanchonete.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Lanchonete.Business\Lanchonete.Business.csproj" />
+    <ProjectReference Include="..\..\Core\Lanchonete.Domain\Lanchonete.Domain.csproj" />
   </ItemGroup>
 
 </Project>
