@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ARv0bN82bLSgJa/IIHdlLv5Ow8ePejW/ghBwQ4B8i6jvfJtQgjx2gr7N0jI0lhZF/ySRrIfrfV/BqVVrNIj/HA==",
+  "dgSpecHash": "8dOsh3XVfrv91WSxcCSj/Auuu5Q1UjzCwzLQfPbIt/bCc6dSCvRAhQF9iNL3fqXy5i21shenSy9HviuHEiJ4xQ==",
   "success": true,
   "projectFilePath": "C:\\Estudos\\Lanchonete.API\\Lanchonete\\src\\Application\\Lanchonete.API\\Lanchonete.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Adriano\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",

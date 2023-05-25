@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eGHiXsQ0Zt3c2EHBDf/as2FowA5XOErhmuOsCiSwU6JLD4nReWtJHQ3d1aU+JkXzABHPeX2o4vY1bJJHHvGWHQ==",
+  "dgSpecHash": "FhW8gapWAbN0O2Ir6z/HDkGylbOeVQnKFJTFtxNbymPIye8vMDmsZRTTdfHbEugZUno0P1BmFXX5ZxDO0QLdOA==",
   "success": true,
   "projectFilePath": "C:\\Estudos\\Lanchonete.API\\Lanchonete\\src\\Core\\Lanchonete.Infra\\Lanchonete.Infra.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Adriano\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Adriano\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
