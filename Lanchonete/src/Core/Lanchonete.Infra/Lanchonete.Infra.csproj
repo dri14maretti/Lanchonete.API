@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Adapters\Lanchonete.SqlClient\Lanchonete.SqlClient.csproj" />
+    <ProjectReference Include="..\Lanchonete.Business\Lanchonete.Business.csproj" />
+    <ProjectReference Include="..\Lanchonete.Domain\Lanchonete.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
