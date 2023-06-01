@@ -29,6 +29,7 @@ namespace Lanchonete.Infra.IoC
             services.AddTransient<IDbConnection>((sp) => new SqlConnection(_conexaoSQL));
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
         }
     }
 }

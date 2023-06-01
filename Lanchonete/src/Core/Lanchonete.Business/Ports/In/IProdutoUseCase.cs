@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Lanchonete.Business.Filters;
+using Lanchonete.Domain.Entities;
 
 namespace Lanchonete.Business.Ports.In
 {
-    internal interface IProdutoUseCase
+    public interface IProdutoUseCase
     {
+        Task Inserir(Produto produto);
+        Task Apagar(int id);
+        Task<Produto> Buscar(ProdutoFiltro filtro);
+        Task Atualizar(Produto produto);
     }
 }

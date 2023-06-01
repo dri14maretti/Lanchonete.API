@@ -44,14 +44,12 @@ namespace Lanchonete.Business.UseCases
 
         public async Task Apagar(int id)
         {
-            var pedidosCliente = await pedidoRepository.BuscarPorClienteId(id);
-            if (pedidosCliente != null)
-                throw new Exception("Não é possível inativar um cliente com pedidos ativos");
+            await VerificarPedidosAtivos(id);
 
             await usuarioRepository.Apagar(id);
         }
 
-        #region
+        #region Validações
         private async Task ValidarCPF(string cpf)
         {
             var filtro = new UsuarioFiltro()
@@ -67,7 +65,10 @@ namespace Lanchonete.Business.UseCases
         }
         private async Task VerificarPedidosAtivos(int idCliente)
         {
+            var pedidosCliente = await pedidoRepository.BuscarPorClienteId(idCliente);
 
+            if (pedidosCliente.Any())
+                throw new Exception("Não é possível desativar um cliente com pedidos ativos");
         }
         #endregion
     }
