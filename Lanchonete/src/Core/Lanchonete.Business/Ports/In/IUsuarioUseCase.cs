@@ -1,4 +1,5 @@
-﻿using Lanchonete.Domain.Entities;
+﻿using Lanchonete.Business.Filters;
+using Lanchonete.Domain.Entities;
 
 namespace Lanchonete.Business.Ports.In
 {
@@ -6,7 +7,7 @@ namespace Lanchonete.Business.Ports.In
     {
         Task Inserir(Usuario usuario);
         Task Apagar(int id);
-        Task<Usuario> Buscar(int id);
+        Task<Usuario> Buscar(UsuarioFiltro filtro);
         Task Atualizar(Usuario usuario);
     }
 }

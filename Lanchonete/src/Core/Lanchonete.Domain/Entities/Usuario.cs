@@ -1,19 +1,29 @@
 ﻿using Lanchonete.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lanchonete.Domain.Entities
 {
     public class Usuario
     {
-        public string CPF { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public FuncaoEnum Funcao { get; set; }
+        public Usuario(string cpf, string nome, Endereco endereco, string telefone, string senha)
+        {
+            CPF = cpf;
+            Nome = nome;
+            Endereco = endereco;
+            Telefone = telefone;
+            Senha = senha;
+        }
+
+        public int? Id { get; private set; }
+        public string CPF { get; private set; }
+        public string Nome { get; private set; }
+        public Endereco Endereco { get; private set; }
+        public string Telefone { get; private set; }
+        public string Senha { get; private set; }
+
+        public void AtribuirId(int id)
+        {
+            Id = id;
+        }
 
     }
 }

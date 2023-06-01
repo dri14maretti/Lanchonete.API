@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lanchonete.Domain.Enums
+namespace Lanchonete.Business.Filters
 {
-    public enum TipoDeUsuario
+    public class UsuarioFiltro
     {
-        Restaurante = 1,
-        Cliente,
-        Entregador,
+        public string? CPF;
+        public string? Nome;
     }
 }

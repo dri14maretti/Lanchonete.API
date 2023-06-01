@@ -1,4 +1,5 @@
-﻿using Lanchonete.Business.Ports.In;
+﻿using Lanchonete.Business.Filters;
+using Lanchonete.Business.Ports.In;
 using Lanchonete.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +17,18 @@ namespace Lanchonete.API.Controllers
         }
         [HttpGet("{usuarioId}")]
         [Produces("application/json")]
-        public async Task<IActionResult> Buscar(int usuarioId)
+        public async Task<IActionResult> Buscar(string nome, string cpf)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var usuario = await usuarioUseCase.Buscar(usuarioId); 
+            var usuarioFiltro = new UsuarioFiltro()
+            {
+                CPF = cpf,
+                Nome = nome
+            };
+
+            var usuario = await usuarioUseCase.Buscar(usuarioFiltro); 
             return Ok(usuario);
         }
         [HttpPost]

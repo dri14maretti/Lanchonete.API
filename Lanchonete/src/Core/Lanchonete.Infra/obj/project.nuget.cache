@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FhW8gapWAbN0O2Ir6z/HDkGylbOeVQnKFJTFtxNbymPIye8vMDmsZRTTdfHbEugZUno0P1BmFXX5ZxDO0QLdOA==",
+  "dgSpecHash": "d3hlO2dMTUEsGVd6l4vwkdov/BAVhAfwVVNf5NiLOnp2AleC4fgm+Kmhf8uL/uzpb9ZGDRxqllwxLAsXYTSNyg==",
   "success": true,
   "projectFilePath": "C:\\Estudos\\Lanchonete.API\\Lanchonete\\src\\Core\\Lanchonete.Infra\\Lanchonete.Infra.csproj",
   "expectedPackageFiles": [

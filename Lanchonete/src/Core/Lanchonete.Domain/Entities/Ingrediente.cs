@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lanchonete.Domain.Enums
+namespace Lanchonete.Domain.Entities
 {
-    public enum TipoDeUsuario
+    public class Ingrediente
     {
-        Restaurante = 1,
-        Cliente,
-        Entregador,
     }
 }

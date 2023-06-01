@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lanchonete.Domain.Enums
+namespace Lanchonete.Business.Ports.In
 {
-    public enum TipoDeUsuario
+    internal interface IProdutoUseCase
     {
-        Restaurante = 1,
-        Cliente,
-        Entregador,
     }
 }
