@@ -16,10 +16,15 @@ namespace Lanchonete.Domain.Entities
             Valor = valor;
         }
 
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
         public List<Ingrediente> Ingredientes { get; private set; }
         public float Valor { get; private set; }
+
+        public void AtribuirId(int id)
+        {
+            Id = id;
+        }
     }
 }

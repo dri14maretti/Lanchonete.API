@@ -1,38 +1,32 @@
 ﻿using Lanchonete.Business.Filters;
 using Lanchonete.Business.Ports.Out;
 using Lanchonete.Domain.Entities;
-using System.Data;
 
 namespace Lanchonete.SqlClient.Repositories
 {
-    public class PedidoRepository : IPedidoRepository
+    public class ProdutoRepository : IProdutoRepository
     {
         public Task<bool> Apagar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Atualizar(Pedido pedido)
+        public Task<bool> Atualizar(Produto objeto)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Pedido> Buscar(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public Task<List<Pedido>> BuscarPorClienteId(int clienteId)
+        public Task<Produto> Buscar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Pedido>> BuscarPorProdutoId(int clienteId)
+        public Task<Produto> Buscar(ProdutoFiltro filtro)
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<int> Inserir(Pedido pedido)
+        public Task<int> Inserir(Produto objeto)
         {
             throw new NotImplementedException();
         }
