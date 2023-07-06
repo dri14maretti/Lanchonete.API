@@ -1,42 +1,84 @@
-﻿using Lanchonete.Business.Filters;
+﻿using Dapper;
+using Lanchonete.Business.Filters;
 using Lanchonete.Business.Ports.Out;
 using Lanchonete.Domain.Entities;
 using System.Data;
 
 namespace Lanchonete.SqlClient.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : OperacoesBaseRepository<Usuario>, IUsuarioRepository
     {
-        private IDbConnection _connection;
-
-        public UsuarioRepository(IDbConnection connection)
+        public UsuarioRepository(IDbConnection dbConnection) : base(dbConnection) {}
+        public async Task<Usuario> Buscar(UsuarioFiltro usuarioFiltro)
         {
-            _connection = connection;
+            var condicoes = new List<string>();
+            var parametros = new DynamicParameters();
+
+            if (!string.IsNullOrEmpty(usuarioFiltro.CPF))
+            {
+                condicoes.Add($"CPF = @CPF");
+                parametros.Add("@CPF", usuarioFiltro.CPF, DbType.String);
+            }
+
+            if (!string.IsNullOrEmpty(usuarioFiltro.Nome))
+            {
+                condicoes.Add("Nome = @Nome");
+                parametros.Add("@Nome", usuarioFiltro.Nome, DbType.String);
+            }
+
+            var where = condicoes.Count > 0 ? $" WHERE {string.Join(" AND ", condicoes.ToArray())}" : "";
+
+            var sql = $@"SELECT * FROM Lanchonete.dbo.Usuario {where}";
+
+            try
+            {
+                var usuarioRetornado = await _connection.QueryFirstOrDefaultAsync<Usuario>(sql, parametros);
+                return usuarioRetornado;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+                throw new Exception(ex.ToString());
+            }
+
         }
 
-        public Task<bool> Apagar(int id)
+        public override async Task<bool> Apagar(int id)
         {
-            throw new NotImplementedException();
+            var sql = "DELETE FROM Lanchonete.dbo.Usuario WHERE Id = @Id";
+
+            var retorno = await _connection.QueryAsync<Usuario>(sql, new { Id = id });
+
+            return true;
         }
 
-        public Task<bool> Atualizar(Usuario objeto)
+        public override async Task<bool> Atualizar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            var sql = @"UPDATE Lanchonete.dbo.Usuario 
+                            SET Nome = @Nome, CPF = @CPF, Telefone = @Telefone, Senha = @Senha
+                        WHERE Id = @Id";
+
+            await _connection.QueryAsync(sql, usuario);
+
+            return true;
         }
 
-        public Task<Usuario> Buscar(int id)
+        public override Task<Usuario> Buscar(int id)
         {
-            throw new NotImplementedException();
+            var sql = @"SELECT * FROM Lanchonete.dbo.Usuario WHERE Id = @id";
+
+            return _connection.QueryFirstOrDefaultAsync<Usuario>(sql, new { id });
         }
 
-        public Task<Usuario> Buscar(UsuarioFiltro usuarioFiltro)
+        public override async Task Inserir(Usuario usuario)
         {
-            throw new NotImplementedException();
-        }
+            var insert = "INSERT INTO Lanchonete.dbo.Usuario VALUES(@Nome, @CPF, @Telefone, @Senha, 1) SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
-        public Task<int> Inserir(Usuario usuario)
-        {
-            throw new NotImplementedException();
+            var usuarioId = (await _connection.QueryAsync<int>(insert, usuario)).Single();
+
+            usuario.Id = usuarioId;
+            usuario.Status = true;
         }
     }
 }

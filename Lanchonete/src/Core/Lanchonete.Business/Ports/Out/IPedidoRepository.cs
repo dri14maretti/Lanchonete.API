@@ -4,7 +4,8 @@ namespace Lanchonete.Business.Ports.Out
 {
     public interface IPedidoRepository : IOperacoesBaseRepository<Pedido>
     {
-        Task<List<Pedido>> BuscarPorClienteId(int clienteId);
-        Task<List<Pedido>> BuscarPorProdutoId(int clienteId);
+        Task<IEnumerable<Pedido>> BuscarPorUsuarioId(int clienteId);
+        Task<IEnumerable<Pedido>> BuscarPorProdutoId(int produtoId);
+        Task<IEnumerable<Pedido>> BuscarPorEnderecoId(int enderecoId);
     }
 }

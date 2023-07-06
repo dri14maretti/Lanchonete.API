@@ -11,14 +11,14 @@ namespace Lanchonete.Business.UseCases
         private IUsuarioRepository usuarioRepository;
         private IPedidoRepository pedidoRepository;
 
-        public UsuarioUseCase(IUsuarioRepository usuarioRepository)
+        public UsuarioUseCase(IUsuarioRepository usuarioRepository, IPedidoRepository pedidoRepository)
         {
             this.usuarioRepository = usuarioRepository;
+            this.pedidoRepository = pedidoRepository;
         }
 
         public async Task Atualizar(Usuario usuario)
         {
-
             var usuarioAtual = await usuarioRepository.Buscar(usuario.Id ?? 0);
 
             if (usuarioAtual.Nome != usuario.Nome)
@@ -37,15 +37,12 @@ namespace Lanchonete.Business.UseCases
         public async Task Inserir(Usuario usuario)
         {
             await ValidarCPF(usuario.CPF);
-            var usuarioId = await usuarioRepository.Inserir(usuario);
-
-            usuario.AtribuirId(usuarioId);
+            await usuarioRepository.Inserir(usuario);
         }
 
         public async Task Apagar(int id)
         {
             await VerificarPedidosAtivos(id);
-
             await usuarioRepository.Apagar(id);
         }
 
@@ -59,13 +56,12 @@ namespace Lanchonete.Business.UseCases
 
             var usuarioRetornado = await usuarioRepository.Buscar(filtro);
 
-
             if (usuarioRetornado != null)
                 throw new Exception("CPF já possui uma conta cadastrada.");
         }
         private async Task VerificarPedidosAtivos(int idCliente)
         {
-            var pedidosCliente = await pedidoRepository.BuscarPorClienteId(idCliente);
+            var pedidosCliente = await pedidoRepository.BuscarPorUsuarioId(idCliente);
 
             if (pedidosCliente.Any())
                 throw new Exception("Não é possível desativar um cliente com pedidos ativos");

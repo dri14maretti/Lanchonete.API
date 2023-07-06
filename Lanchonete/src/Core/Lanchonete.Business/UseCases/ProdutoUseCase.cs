@@ -18,7 +18,7 @@ namespace Lanchonete.Business.UseCases
         {
             await ValidarPedidosComProduto(id);
 
-            await pedidoRepository.Apagar(id);
+            await produtoRepository.Apagar(id);
         }
 
         public async Task Atualizar(Produto produto)
@@ -31,7 +31,7 @@ namespace Lanchonete.Business.UseCases
             await produtoRepository.Atualizar(produto);
         }
 
-        public async Task<Produto> Buscar(ProdutoFiltro filtro)
+        public async Task<IEnumerable<Produto>> Buscar(ProdutoFiltro filtro)
         {
             var produto = await produtoRepository.Buscar(filtro);
             return produto;
@@ -40,9 +40,7 @@ namespace Lanchonete.Business.UseCases
         public async Task Inserir(Produto produto)
         {
             await ValidarExistenciaNome(produto.Nome);
-
-            var produtoId = await produtoRepository.Inserir(produto);
-            produto.AtribuirId(produtoId);
+            await produtoRepository.Inserir(produto);
         }
 
         private async Task ValidarExistenciaNome(string nome)
@@ -52,7 +50,7 @@ namespace Lanchonete.Business.UseCases
                 Nome = nome
             };
 
-            var produtoExiste = (await produtoRepository.Buscar(filtro)) != null;
+            var produtoExiste = (await produtoRepository.Buscar(filtro)).Any();
 
             if (produtoExiste)
                 throw new Exception("Um produto com esse nome já fora cadastrado");
@@ -62,7 +60,7 @@ namespace Lanchonete.Business.UseCases
             var pedidosProduto = await pedidoRepository.BuscarPorProdutoId(id);
 
             if (pedidosProduto.Any())
-                throw new Exception("Não é possível desativar um cliente com pedidos ativos");
+                throw new Exception("Não é possível desativar um produto com pedidos ativos");
         }
     }
 }

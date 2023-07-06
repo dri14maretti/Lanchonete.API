@@ -7,7 +7,7 @@ namespace Lanchonete.Business.Ports.In
     {
         Task Inserir(Produto produto);
         Task Apagar(int id);
-        Task<Produto> Buscar(ProdutoFiltro filtro);
+        Task<IEnumerable<Produto>> Buscar(ProdutoFiltro filtro);
         Task Atualizar(Produto produto);
     }
 }

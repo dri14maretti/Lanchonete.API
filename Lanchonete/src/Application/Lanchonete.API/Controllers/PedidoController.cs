@@ -1,4 +1,4 @@
-﻿using Lanchonete.Business.Filters;
+﻿
 using Lanchonete.Business.Ports.In;
 using Lanchonete.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -9,60 +9,43 @@ namespace Lanchonete.API.Controllers
     [Route("api/[controller]")]
     public class PedidoController : ControllerBase
     {
-        private IProdutoUseCase produtoUseCase;
+        private IPedidoUseCase pedidoUseCase;
 
-        public PedidoController(IProdutoUseCase produtoUseCase)
+        public PedidoController(IPedidoUseCase pedidoUseCase)
         {
-            this.produtoUseCase = produtoUseCase;
+            this.pedidoUseCase = pedidoUseCase;
         }
-        [HttpGet]
+        [HttpGet()]
         [Produces("application/json")]
-        public async Task<IActionResult> Buscar(int id, string nome)
+        public async Task<IActionResult> Buscar(int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var produtoFiltro = new ProdutoFiltro()
-            {
-                Id = id,
-                Nome = nome
-            };
-
-            var produto = await produtoUseCase.Buscar(produtoFiltro);
-            return Ok(produto);
+            var pedido = await pedidoUseCase.Buscar(id);
+            return Ok(pedido);
         }
         [HttpPost]
         [Produces("application/json")]
-        public async Task<IActionResult> Inserir([FromBody] Produto produto)
+        public async Task<IActionResult> Inserir([FromBody] Pedido pedido)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await produtoUseCase.Inserir(produto);
+            await pedidoUseCase.Inserir(pedido);
 
-            return Ok(produto);
+            return Ok(pedido);
         }
-        [HttpDelete("{produtoId}")]
+        [HttpDelete]
         [Produces("application/json")]
-        public async Task<IActionResult> Apagar(int produtoId)
+        public async Task<IActionResult> Apagar([FromQuery] int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await produtoUseCase.Apagar(produtoId);
+            await pedidoUseCase.Apagar(id);
 
-            return Ok(true);
-        }
-        [HttpPatch]
-        [Produces("application/json")]
-        public async Task<IActionResult> Atualizar([FromBody] Produto produto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            await produtoUseCase.Atualizar(produto);
-
-            return Ok(produto);
+            return NoContent();
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Lanchonete.Business.Ports.Out
 {
     public interface IProdutoRepository : IOperacoesBaseRepository<Produto>
     {
-        Task<Produto> Buscar(ProdutoFiltro filtro);
+       Task<IEnumerable<Produto>> Buscar(ProdutoFiltro filtro);
     }
 }

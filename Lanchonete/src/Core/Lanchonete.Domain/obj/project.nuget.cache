@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FulKco+SWgYDdKefpzzdYktH2Vkyd8CiquzQWWpgQsV2mPOfA2rpHYKO5WaiCRG9qzsEuep7f5WtdkbfG84zgg==",
+  "dgSpecHash": "muZwYIx2EGVrqBSyOujgyPAd+SqUPzeNHkipZsjPE9jyJvcm2sj5HV7r9DqES1XE3jt7bNwWMTWm++/lDlgS0Q==",
   "success": true,
   "projectFilePath": "C:\\Estudos\\Lanchonete.API\\Lanchonete\\src\\Core\\Lanchonete.Domain\\Lanchonete.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Adriano\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
+    "C:\\Users\\Adriano\\.nuget\\packages\\dapper.contrib\\2.0.78\\dapper.contrib.2.0.78.nupkg.sha512"
+  ],
   "logs": [
     {
       "code": "NU1803",

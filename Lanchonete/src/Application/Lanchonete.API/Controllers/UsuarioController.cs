@@ -15,9 +15,9 @@ namespace Lanchonete.API.Controllers
         {
             this.usuarioUseCase = usuarioUseCase;
         }
-        [HttpGet("{usuarioId}")]
+        [HttpGet()]
         [Produces("application/json")]
-        public async Task<IActionResult> Buscar(string nome, string cpf)
+        public async Task<IActionResult> Buscar(string? nome = null, string? cpf = null)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -44,14 +44,14 @@ namespace Lanchonete.API.Controllers
         }
         [HttpDelete("{usuarioId}")]
         [Produces("application/json")]
-        public async Task<IActionResult> Apagar(int id)
+        public async Task<IActionResult> Apagar([FromRoute] int usuarioId)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await usuarioUseCase.Apagar(id);
+            await usuarioUseCase.Apagar(usuarioId);
 
-            return Ok(true);
+            return NoContent();
         }
         [HttpPatch]
         [Produces("application/json")]
